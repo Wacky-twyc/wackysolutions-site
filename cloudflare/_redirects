@@ -1,0 +1,9 @@
+# Canonical host: send www to the apex so Apple's reviewer and Google
+# both see one address.
+https://www.wackysolutions.org/*  https://wackysolutions.org/:splat  301
+
+# Friendly URLs without the .html
+/about     /about.html    200
+/services  /services.html 200
+/contact   /contact.html  200
+/privacy   /privacy.html  200

@@ -1,0 +1,394 @@
+/* =========================================================
+   !WackySolutions — main.css
+   Mobile-first. Gold: rgb(212,160,23) / #D4A017
+   ========================================================= */
+
+:root{
+  /* Palette — warm dark "workbench at night", gold is the only chroma */
+  --ink:        #12100C;
+  --ink-2:      #191610;
+  --ink-3:      #221E16;
+  --gold:       #D4A017;
+  --gold-soft:  #F0C75A;
+  --gold-dim:   #8A6B12;
+  --paper:      #EFE9DC;
+  --paper-dim:  #9C9585;
+  --line:       rgba(239,233,220,.12);
+  --line-2:     rgba(239,233,220,.06);
+
+  /* Type */
+  --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --body:    "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Scale */
+  --step--1: clamp(.78rem, .76rem + .1vw, .84rem);
+  --step-0:  clamp(1rem, .97rem + .16vw, 1.09rem);
+  --step-1:  clamp(1.2rem, 1.12rem + .4vw, 1.5rem);
+  --step-2:  clamp(1.5rem, 1.34rem + .8vw, 2.1rem);
+  --step-3:  clamp(1.95rem, 1.6rem + 1.7vw, 3.1rem);
+  --step-4:  clamp(2.5rem, 1.9rem + 3vw, 4.6rem);
+
+  --pad: clamp(1.25rem, 5vw, 3rem);
+  --maxw: 68rem;
+  --radius: 14px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:var(--step-0);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img,svg,canvas{ max-width:100%; display:block; }
+
+a{ color:var(--gold-soft); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:hover{ color:var(--gold); }
+
+:focus-visible{
+  outline:2px solid var(--gold-soft);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--gold); color:var(--ink);
+  padding:.7rem 1.1rem; font-family:var(--mono); font-size:var(--step--1);
+}
+.skip:focus{ left:.5rem; top:.5rem; }
+
+/* ---------- Type ---------- */
+h1,h2,h3,h4{
+  font-family:var(--display);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin:0 0 .5em;
+  text-wrap:balance;
+}
+h1{ font-size:var(--step-4); }
+h2{ font-size:var(--step-3); }
+h3{ font-size:var(--step-1); letter-spacing:-.01em; }
+p{ margin:0 0 1.1em; max-width:60ch; }
+.lede{ font-size:var(--step-1); line-height:1.5; color:var(--paper); }
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:var(--step--1);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin:0 0 1rem;
+  display:flex; align-items:center; gap:.7rem;
+}
+.eyebrow::after{
+  content:""; flex:1; height:1px; background:var(--line);
+}
+
+.muted{ color:var(--paper-dim); }
+.gold{ color:var(--gold); }
+
+/* ---------- Layout ---------- */
+.wrap{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:var(--pad);
+}
+section{ padding-block:clamp(3.5rem, 10vw, 7rem); }
+.section-tight{ padding-block:clamp(2.5rem, 7vw, 4.5rem); }
+.rule{ height:1px; background:var(--line); border:0; margin:0; }
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:60;
+  background:rgba(18,16,12,.78);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s ease;
+}
+.site-header[data-scrolled="true"]{ border-bottom-color:var(--line); }
+.site-header .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:60px;
+}
+.brand{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:1.06rem;
+  letter-spacing:-.02em;
+  color:var(--paper);
+  text-decoration:none;
+  display:inline-flex; align-items:baseline; gap:.04em;
+}
+.brand .bang{ color:var(--gold); }
+
+.nav-toggle{
+  appearance:none; background:transparent; border:1px solid var(--line);
+  color:var(--paper); border-radius:8px;
+  padding:.45rem .7rem; font-family:var(--mono); font-size:.75rem;
+  letter-spacing:.1em; text-transform:uppercase; cursor:pointer;
+}
+.nav-toggle:hover{ border-color:var(--gold-dim); }
+
+.nav{
+  position:fixed; inset:0; z-index:70;
+  background:var(--ink);
+  display:flex; flex-direction:column; justify-content:center;
+  padding:var(--pad);
+  transform:translateY(-100%);
+  transition:transform .38s cubic-bezier(.22,1,.36,1);
+  visibility:hidden;
+}
+.nav[data-open="true"]{ transform:translateY(0); visibility:visible; }
+.nav a{
+  font-family:var(--display); font-weight:700;
+  font-size:var(--step-3); color:var(--paper); text-decoration:none;
+  padding:.35rem 0; border-bottom:1px solid var(--line-2);
+}
+.nav a:hover,.nav a[aria-current="page"]{ color:var(--gold); }
+.nav-close{
+  position:absolute; top:14px; right:var(--pad);
+  background:transparent; border:1px solid var(--line); color:var(--paper);
+  border-radius:8px; padding:.45rem .7rem; cursor:pointer;
+  font-family:var(--mono); font-size:.75rem; letter-spacing:.1em;
+}
+
+@media (min-width:768px){
+  .nav-toggle,.nav-close{ display:none; }
+  .nav{
+    position:static; transform:none; visibility:visible;
+    flex-direction:row; gap:1.6rem; padding:0; background:none;
+    inset:auto; align-items:center;
+  }
+  .nav a{
+    font-family:var(--mono); font-weight:400;
+    font-size:.8rem; letter-spacing:.1em; text-transform:uppercase;
+    border:0; padding:0; color:var(--paper-dim);
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding-block:4rem 3rem;
+}
+/* Once the canvas owns the wordmark, push the copy clear of the centred type. */
+.stage-live .hero-copy{ margin-top:clamp(130px, 32vh, 300px); }
+#stage{
+  position:fixed; inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.hero .wrap,
+.journey .wrap{ position:relative; z-index:2; }
+/* Everything after the 3D narrative sits on solid ground. */
+.grounded{ position:relative; z-index:3; background:var(--ink); }
+
+/* CSS fallback wordmark — shown when WebGL is unavailable or motion is reduced */
+.wordmark-fallback{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.4rem, 11vw, 6rem);
+  letter-spacing:-.035em;
+  line-height:1;
+  margin:0 0 1.4rem;
+}
+.wordmark-fallback .bang{ color:var(--gold); }
+.stage-live .wordmark-fallback{
+  /* Canvas is driving the wordmark; keep text for a11y + SEO only */
+  position:absolute;
+  width:1px; height:1px; overflow:hidden;
+  clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
+}
+
+.hero-copy{ max-width:34rem; }
+.hero-tag{
+  font-family:var(--mono); font-size:var(--step--1);
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.2rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:.6rem;
+  font-family:var(--mono); font-size:var(--step--1);
+  letter-spacing:.1em; text-transform:uppercase;
+  padding:.9rem 1.4rem; border-radius:999px;
+  text-decoration:none; border:1px solid transparent;
+  transition:transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.btn:active{ transform:translateY(1px); }
+.btn-primary{ background:var(--gold); color:var(--ink); font-weight:700; }
+.btn-primary:hover{ background:var(--gold-soft); color:var(--ink); }
+.btn-ghost{ border-color:var(--line); color:var(--paper); }
+.btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+.btn-row{ display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.6rem; }
+
+/* ---------- Scroll journey (sticky 3D acts) ---------- */
+.journey{ position:relative; }
+.act{
+  min-height:100svh;
+  display:flex; align-items:center;
+  padding-block:2rem;
+}
+.act-card{
+  background:linear-gradient(180deg, rgba(25,22,16,.92), rgba(25,22,16,.72));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(1.4rem,5vw,2.2rem);
+  max-width:34rem;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+.act-num{
+  font-family:var(--mono); font-size:var(--step--1);
+  color:var(--gold); letter-spacing:.14em; margin-bottom:.8rem;
+}
+
+/* ---------- Cards / grids ---------- */
+.grid{ display:grid; gap:1rem; }
+@media (min-width:700px){
+  .grid-2{ grid-template-columns:repeat(2,1fr); }
+  .grid-3{ grid-template-columns:repeat(3,1fr); }
+}
+.card{
+  background:var(--ink-2);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(1.25rem,4vw,1.75rem);
+}
+.card h3{ margin-bottom:.4rem; }
+.card p:last-child{ margin-bottom:0; }
+.card-gold{ border-color:var(--gold-dim); }
+
+/* Numbered process — the order genuinely matters here */
+.steps{ list-style:none; margin:0; padding:0; counter-reset:step; }
+.steps li{
+  counter-increment:step;
+  border-top:1px solid var(--line);
+  padding:1.5rem 0 1.5rem 3.2rem;
+  position:relative;
+}
+.steps li:last-child{ border-bottom:1px solid var(--line); }
+.steps li::before{
+  content:counter(step,decimal-leading-zero);
+  position:absolute; left:0; top:1.5rem;
+  font-family:var(--mono); font-size:var(--step--1);
+  color:var(--gold); letter-spacing:.08em;
+}
+.steps h3{ margin-bottom:.3rem; }
+.steps p{ margin-bottom:0; color:var(--paper-dim); }
+
+/* Definition-style contact block */
+.dl{ display:grid; gap:1.1rem; margin:0; }
+.dl div{ border-top:1px solid var(--line); padding-top:1.1rem; }
+.dl dt{
+  font-family:var(--mono); font-size:var(--step--1);
+  letter-spacing:.14em; text-transform:uppercase; color:var(--paper-dim);
+  margin-bottom:.35rem;
+}
+.dl dd{ margin:0; font-size:var(--step-1); }
+.dl dd a{ text-decoration:none; }
+
+/* ---------- Forms ---------- */
+.field{ display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.1rem; }
+.field label{
+  font-family:var(--mono); font-size:var(--step--1);
+  letter-spacing:.1em; text-transform:uppercase; color:var(--paper-dim);
+}
+.field input,.field select,.field textarea{
+  font-family:var(--body); font-size:var(--step-0);
+  background:var(--ink-3); color:var(--paper);
+  border:1px solid var(--line); border-radius:10px;
+  padding:.8rem .9rem; width:100%;
+}
+.field textarea{ min-height:150px; resize:vertical; }
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--gold-dim); outline:2px solid transparent;
+}
+.form-note{ font-size:var(--step--1); color:var(--paper-dim); }
+.form-status{
+  font-family:var(--mono); font-size:var(--step--1);
+  margin-top:1rem; min-height:1.4em;
+}
+.form-status[data-state="error"]{ color:#E8836B; }
+.form-status[data-state="ok"]{ color:var(--gold-soft); }
+
+/* ---------- Legal pages ---------- */
+.prose h2{ font-size:var(--step-2); margin-top:2.4rem; }
+.prose h3{ margin-top:1.6rem; }
+.prose ul{ padding-left:1.2rem; color:var(--paper); }
+.prose li{ margin-bottom:.5rem; max-width:60ch; }
+.prose{ max-width:44rem; }
+
+/* ---------- Footer ---------- */
+.site-footer{
+  border-top:1px solid var(--line);
+  padding-block:2.5rem 3rem;
+  font-size:var(--step--1);
+  color:var(--paper-dim);
+}
+.footer-grid{ display:grid; gap:1.8rem; }
+@media (min-width:700px){
+  .footer-grid{ grid-template-columns:1.4fr 1fr 1fr; }
+}
+.site-footer h4{
+  font-family:var(--mono); font-size:var(--step--1);
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--paper); font-weight:400; margin-bottom:.8rem;
+}
+.site-footer ul{ list-style:none; margin:0; padding:0; }
+.site-footer li{ margin-bottom:.45rem; }
+.site-footer a{ color:var(--paper-dim); text-decoration:none; }
+.site-footer a:hover{ color:var(--gold); }
+.legal-line{
+  margin-top:2.2rem; padding-top:1.4rem;
+  border-top:1px solid var(--line-2);
+  font-family:var(--mono); font-size:.72rem;
+  letter-spacing:.05em; color:var(--paper-dim);
+}
+/* The registered legal entity name must stay verbatim and visible. */
+address.entity{
+  font-style:normal;
+  line-height:1.7;
+}
+
+/* ---------- Scroll reveal ---------- */
+.reveal{ opacity:0; transform:translateY(18px); }
+.reveal.is-in{
+  opacity:1; transform:none;
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  .reveal{ opacity:1; transform:none; }
+  #stage{ display:none; }
+  .stage-live .wordmark-fallback{
+    position:static; width:auto; height:auto; clip:auto; clip-path:none;
+  }
+  .act{ min-height:auto; padding-block:2.5rem; }
+}
