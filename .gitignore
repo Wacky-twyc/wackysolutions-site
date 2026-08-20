@@ -5,3 +5,6 @@ node_modules/
 *.log
 .env
 .vscode/
+
+# Superseded draft folder — the live site is now the repo root
+wackysolutions-site 3/

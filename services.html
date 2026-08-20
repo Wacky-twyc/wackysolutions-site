@@ -2,166 +2,195 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services — !WackySolutions LLC</title>
-<meta name="description" content="Business entity formation, app design and development, and App Store and Google Play publishing. End-to-end services for people with an app idea and no technical background.">
-<link rel="canonical" href="https://wackysolutions.org/services.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="!WackySolutions LLC">
-<meta property="og:title" content="Services — !WackySolutions LLC">
-<meta property="og:description" content="Entity formation, app development, and store publishing — under one roof, in plain English.">
-<meta name="theme-color" content="#12100C">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="/site.webmanifest">
+<meta name="description" content="Business formation, app design and development, and App Store and Google Play publishing — everything between the idea and the store, from one company.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Bodoni+Moda:opsz,wght@6..96,400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="bang">!</span>WackySolutions</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <button class="nav-close">Close</button>
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/services.html" aria-current="page">Services</a>
-      <a href="/contact.html">Contact</a>
+<div class="rail" aria-hidden="true">
+  <span class="rail-glyph"><span></span><span></span><span></span></span>
+  <a class="rail-brand" href="index.html" tabindex="-1">!WackySolutions LLC</a>
+  <svg class="asterisk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1v22M1 12h22M4.2 4.2l15.6 15.6M19.8 4.2L4.2 19.8" stroke="#D4A017" stroke-width="2.4" fill="none"/></svg>
+</div>
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="index.html"><span><span class="hot">!</span>WackySolutions</span><span class="brand-suffix">LLC</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-list" id="primary-nav">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link" href="services.html" aria-current="page">Services</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main id="main" class="grounded">
-
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Services</p>
-      <h1>Everything between the idea and the store</h1>
-      <p class="lede">You could hire a formation service, a design studio, a development firm, and a consultant to manage them. Or you could hire us once.</p>
+<main id="main">
+  <section class="hero">
+    <div class="shell hero-top">
+      <div class="hero-head">
+        <p class="label">Services</p>
+        <h1 class="kicker">Everything between the idea and the <span class="hot">store</span></h1>
+        <p class="lede">You could hire a formation service, a design studio, a development firm, and a consultant to manage them. Or you could hire us once.</p>
+      </div>
+      <div class="hero-note"><p class="micro">Every app is a different amount of work, so every quote is specific to what you&rsquo;re building and how much of it you&rsquo;ve already figured out. Tell us about the idea and we&rsquo;ll price it honestly.</p></div>
     </div>
+    <div class="markrow" style="--mark-size: 18vw; --mark-size-sm: 23vw">
+      <div class="pagemark" aria-hidden="true">Services</div>
+      <nav class="stack" aria-label="Service areas">
+        <a href="#formation"><span>Formation</span></a>
+        <a href="#build"><span>Design &amp; build</span></a>
+        <a href="#publishing"><span>Publishing</span></a>
+      </nav>
+    </div>
+  <nav class="stack-flat" aria-label="Service areas">
+    <a href="#formation">Formation</a>
+    <a href="#build">Design &amp; build</a>
+    <a href="#publishing">Publishing</a>
+  </nav>
   </section>
 
-  <hr class="rule">
+  <div class="shell">
+    <section class="service reveal" id="formation" style="border-top:0">
+      <div class="split">
+        <div class="split-label"><p class="label">Business formation</p></div>
+        <div class="split-body">
+          <div class="service-head">
+            <h2>A real company for your app to live in</h2>
+            <p class="lede">Apps make money. Money needs somewhere legitimate to land.</p>
+          </div>
+          <div class="detail-grid">
+            <div class="detail">
+              <h4>Entity formation</h4>
+              <p>We form the entity in the state that makes sense for your situation, file the paperwork, and get you registered.</p>
+            </div>
+            <div class="detail">
+              <h4>EIN and accounting structure</h4>
+              <p>Federal tax ID and a books structure that separates the business from you properly, so revenue is clean from day one.</p>
+            </div>
+            <div class="detail">
+              <h4>Compliance calendar</h4>
+              <p>Annual reports, registered agent, state filings. We tell you what&rsquo;s due before it&rsquo;s late.</p>
+            </div>
+            <div class="detail">
+              <h4>Store-ready identity</h4>
+              <p>The Apple and Google developer accounts both want a verifiable business. We get those pieces lined up in the right order.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">01 — Business formation</p>
-      <h2>A real company for your app to live in</h2>
-      <p class="lede" style="margin-bottom:1.6rem;">Apps make money. Money needs somewhere legitimate to land.</p>
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <h3>Entity formation</h3>
-          <p>We form the entity in the state that makes sense for your situation, file the paperwork, and get you registered.</p>
+    <section class="service reveal" id="build">
+      <div class="split">
+        <div class="split-label"><p class="label">Design and development</p></div>
+        <div class="split-body">
+          <div class="service-head">
+            <h2>Wireframes first, always</h2>
+            <p class="lede">Nobody should approve something they can&rsquo;t see.</p>
+          </div>
+          <div class="detail-grid">
+            <div class="detail">
+              <h4>Requirements by conversation</h4>
+              <p>We talk. You describe what you want in your own words. We turn that into screens, rules, and data relationships without making you learn any of those terms.</p>
+            </div>
+            <div class="detail">
+              <h4>Wireframes and screen flow</h4>
+              <p>Your app laid out screen by screen, in order, so you can move things and change your mind while it&rsquo;s still free to do so.</p>
+            </div>
+            <div class="detail">
+              <h4>iOS and Android build</h4>
+              <p>Built for both platforms, with an AI-assisted stack that cuts the expensive, repetitive parts of development rather than billing you for them.</p>
+            </div>
+            <div class="detail">
+              <h4>Testing and revisions</h4>
+              <p>We test it, you test it, we fix what you find. Revisions are part of the process, not a change order.</p>
+            </div>
+          </div>
         </div>
-        <div class="card reveal">
-          <h3>EIN and accounting structure</h3>
-          <p>Federal tax ID and a books structure that separates the business from you properly, so revenue is clean from day one.</p>
+      </div>
+    </section>
+
+    <section class="service reveal" id="publishing">
+      <div class="split">
+        <div class="split-label"><p class="label">Publishing</p></div>
+        <div class="split-body">
+          <div class="service-head">
+            <h2>Getting past the reviewers</h2>
+            <p class="lede">The last mile is where most first-timers stall out.</p>
+          </div>
+          <div class="detail-grid">
+            <div class="detail">
+              <h4>Developer accounts</h4>
+              <p>Apple Developer Program and Google Play Console enrollment, including the business verification steps that trip people up.</p>
+            </div>
+            <div class="detail">
+              <h4>Submission and review</h4>
+              <p>We submit, we monitor, and if a reviewer pushes back we handle the response and the resubmission.</p>
+            </div>
+            <div class="detail">
+              <h4>Launch and updates</h4>
+              <p>Your app goes live, and we stay available for the fixes and updates that always follow a first release.</p>
+            </div>
+          </div>
         </div>
-        <div class="card reveal">
-          <h3>Compliance calendar</h3>
-          <p>Annual reports, registered agent, state filings. We tell you what's due before it's late.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Store-ready identity</h3>
-          <p>The Apple and Google developer accounts both want a verifiable business. We get those pieces lined up in the right order.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="section section-tint">
+    <div class="shell split reveal">
+      <div class="split-label"><p class="label">Engagement</p></div>
+      <div class="split-body">
+        <h2>You set how involved you are</h2>
+        <p>Both ends of this range are perfectly good ways to work with us. The difference shows up in your quote.</p>
+        <div class="tier-grid">
+          <div class="tier">
+            <div class="meter" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+            <h3>You bring the idea</h3>
+            <p>That&rsquo;s it, and that&rsquo;s enough. We handle discovery, design, entity, build, and launch. You review at each stage from the best seat in the house.</p>
+            <span class="meter-caption">You supply: the idea</span>
+          </div>
+          <div class="tier">
+            <div class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span></span></div>
+            <h3>You bring some of it</h3>
+            <p>You have sketches, a competitor you want to work from, or a clear sense of the screens. We build on what you&rsquo;ve got instead of starting cold.</p>
+            <span class="meter-caption">You supply: sketches and direction</span>
+          </div>
+          <div class="tier">
+            <div class="meter" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+            <h3>You bring it all</h3>
+            <p>Your own designs, wireframes, tables, and data relationships. Clients who arrive this prepared see meaningful discounts, because they&rsquo;ve genuinely removed work from the project.</p>
+            <span class="meter-caption">You supply: designs and data model</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="rule">
-
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">02 — Design and development</p>
-      <h2>Wireframes first, always</h2>
-      <p class="lede" style="margin-bottom:1.6rem;">Nobody should approve something they can't see.</p>
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <h3>Requirements by conversation</h3>
-          <p>We talk. You describe what you want in your own words. We turn that into screens, rules, and data relationships without making you learn any of those terms.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Wireframes and screen flow</h3>
-          <p>Your app laid out screen by screen, in order, so you can move things and change your mind while it's still free to do so.</p>
-        </div>
-        <div class="card reveal">
-          <h3>iOS and Android build</h3>
-          <p>Built for both platforms, with an AI-assisted stack that cuts the expensive, repetitive parts of development rather than billing you for them.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Testing and revisions</h3>
-          <p>We test it, you test it, we fix what you find. Revisions are part of the process, not a change order.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">03 — Publishing</p>
-      <h2>Getting past the reviewers</h2>
-      <p class="lede" style="margin-bottom:1.6rem;">The last mile is where most first-timers stall out.</p>
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <h3>Developer accounts</h3>
-          <p>Apple Developer Program and Google Play Console enrollment, including the business verification steps that trip people up.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Store listings</h3>
-          <p>Screenshots, descriptions, categories, age ratings, privacy disclosures — assembled so the listing works as a sales page, not just a form.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Submission and review</h3>
-          <p>We submit, we monitor, and if a reviewer pushes back we handle the response and the resubmission.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Launch and updates</h3>
-          <p>Your app goes live, and we stay available for the fixes and updates that always follow a first release.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule">
-
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">Engagement</p>
-      <h2>You set how involved you are</h2>
-      <p class="lede">Both ends of this range are perfectly good ways to work with us. The difference shows up in your quote.</p>
-
-      <ol class="steps">
-        <li class="reveal">
-          <h3>You bring the idea</h3>
-          <p>That's it, and that's enough. We handle discovery, design, entity, build, and launch. You review at each stage from the best seat in the house.</p>
-        </li>
-        <li class="reveal">
-          <h3>You bring some of it</h3>
-          <p>You have sketches, a competitor you want to work from, or a clear sense of the screens. We build on what you've got instead of starting cold.</p>
-        </li>
-        <li class="reveal">
-          <h3>You bring the homework</h3>
-          <p>Your own designs, wireframes, tables, and data relationships. Clients who arrive this prepared see meaningful discounts, because they've genuinely removed work from the project.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section-tight">
-    <div class="wrap">
-      <div class="card card-gold reveal">
-        <h2 style="margin-bottom:.4rem;">Pricing</h2>
-        <p>Every app is a different amount of work, so every quote is specific to what you're building and how much of it you've already figured out. Tell us about the idea and we'll price it honestly — including telling you if we think it should be smaller for a first release.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/contact.html">Request a quote</a>
-          <a class="btn btn-ghost" href="tel:+14044096050">404-409-6050</a>
+  <section class="section">
+    <div class="shell split reveal">
+      <div class="split-label"><p class="label">Pricing</p></div>
+      <div class="split-body">
+        <h2>Every quote is specific to what you&rsquo;re building</h2>
+        <p>Every app is a different amount of work, so every quote is specific to what you&rsquo;re building and how much of it you&rsquo;ve already figured out. Tell us about the idea and we&rsquo;ll price it honestly.</p>
+        <div class="cta-row">
+          <a class="btn" href="contact.html">Request a quote</a>
+          <a class="tel-link" href="tel:+14044096050">404-409-6050</a>
         </div>
       </div>
     </div>
@@ -169,12 +198,13 @@
 
 </main>
 
-<footer class="site-footer grounded">
-  <div class="wrap">
+<footer class="site-footer">
+  <div class="shell">
     <div class="footer-grid">
       <div>
-        <h4>!WackySolutions LLC</h4>
-        <address class="entity">
+        <p class="label">Get in touch</p>
+        <address>
+          !WackySolutions LLC<br>
           1870 The Exchange SE, Ste 220 #202767<br>
           Atlanta, GA 30339<br>
           <a href="tel:+14044096050">404-409-6050</a><br>
@@ -182,28 +212,30 @@
         </address>
       </div>
       <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
+        <p class="label">Pages</p>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
       <div>
-        <h4>What we do</h4>
-        <ul>
-          <li>Business entity formation</li>
-          <li>App design and development</li>
-          <li>App Store &amp; Google Play publishing</li>
+        <p class="label">What we do</p>
+        <ul class="footer-list">
+          <li><a href="services.html#formation">Business entity formation</a></li>
+          <li><a href="services.html#build">App design and development</a></li>
+          <li><a href="services.html#publishing">App Store &amp; Google Play publishing</a></li>
         </ul>
       </div>
     </div>
-    <p class="legal-line">© 2026 !WackySolutions LLC. All rights reserved. A Georgia limited liability company.</p>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> !WackySolutions LLC</span>
+      <span>A Georgia limited liability company</span>
+    </div>
   </div>
 </footer>
 
-<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

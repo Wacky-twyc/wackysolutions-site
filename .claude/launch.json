@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "site",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4173"],
-      "port": 4173
+      "name": "wackysolutions-site",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-danyelleperdue-Desktop--WackySolutions-wackysolutions-website-wackysolutions-site-3/ca6de6f2-7fc0-4f68-bb9e-29f2f205509c/scratchpad/server.js"],
+      "port": 4321
     }
   ]
 }

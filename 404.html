@@ -4,31 +4,105 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — !WackySolutions LLC</title>
+<meta name="description" content="That page is not here.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Bodoni+Moda:opsz,wght@6..96,400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="bang">!</span>WackySolutions</a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="rail" aria-hidden="true">
+  <span class="rail-glyph"><span></span><span></span><span></span></span>
+  <a class="rail-brand" href="index.html" tabindex="-1">!WackySolutions LLC</a>
+  <svg class="asterisk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1v22M1 12h22M4.2 4.2l15.6 15.6M19.8 4.2L4.2 19.8" stroke="#D4A017" stroke-width="2.4" fill="none"/></svg>
+</div>
+
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="index.html"><span><span class="hot">!</span>WackySolutions</span><span class="brand-suffix">LLC</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-list" id="primary-nav">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link" href="services.html">Services</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
-<main class="grounded">
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">404</p>
-      <h1>That page isn't here</h1>
-      <p class="lede">The link is wrong or the page moved. Either way, it isn't your fault.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="/">Back to the home page</a>
-        <a class="btn btn-ghost" href="/contact.html">Contact us</a>
+
+<main id="main">
+  <section class="hero">
+    <div class="shell hero-top">
+      <div class="hero-head">
+        <p class="label">Error 404</p>
+        <h1 class="kicker">That page <span class="hot">isn&rsquo;t here</span></h1>
+        <p class="lede">The link may be old, or the address may have a typo in it. Everything on the site is one click away.</p>
+      </div>
+      <div></div>
+    </div>
+    <div class="markrow" style="--mark-size: 30vw; --mark-size-sm: 38vw">
+      <div class="pagemark" data-fit-max="380" aria-hidden="true">404</div>
+    </div>
+  </section>
+
+  <section class="section section-flush">
+    <div class="shell">
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn" href="index.html">Go to the home page</a>
+        <a class="btn btn-ghost" href="contact.html">Contact us</a>
       </div>
     </div>
   </section>
+
 </main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <p class="label">Get in touch</p>
+        <address>
+          !WackySolutions LLC<br>
+          1870 The Exchange SE, Ste 220 #202767<br>
+          Atlanta, GA 30339<br>
+          <a href="tel:+14044096050">404-409-6050</a><br>
+          <a href="mailto:info@wackysolutions.org">info@wackysolutions.org</a>
+        </address>
+      </div>
+      <div>
+        <p class="label">Pages</p>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="label">What we do</p>
+        <ul class="footer-list">
+          <li><a href="services.html#formation">Business entity formation</a></li>
+          <li><a href="services.html#build">App design and development</a></li>
+          <li><a href="services.html#publishing">App Store &amp; Google Play publishing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> !WackySolutions LLC</span>
+      <span>A Georgia limited liability company</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

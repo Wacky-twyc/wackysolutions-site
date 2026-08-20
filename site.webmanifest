@@ -1,10 +1,16 @@
 {
   "name": "!WackySolutions LLC",
   "short_name": "!WackySolutions",
-  "description": "Creative technology company. We build your app idea, start to finish.",
+  "description": "A creative technology company in Atlanta. Company formation, app design and build, and App Store publishing.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#12100C",
   "theme_color": "#12100C",
-  "icons": [{ "src": "/assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
 }

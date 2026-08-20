@@ -2,232 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>!WackySolutions — We build your app idea, start to finish</title>
-<meta name="description" content="!WackySolutions LLC is a creative technology company in Atlanta, Georgia. We form your business entity, design and build your app, and get it published on the App Store and Google Play — in plain English, for people with no technical background.">
-<link rel="canonical" href="https://wackysolutions.org/">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="!WackySolutions LLC">
-<meta property="og:title" content="!WackySolutions — We build your app idea, start to finish">
-<meta property="og:description" content="You bring the idea. We handle the entity, the build, and the app stores — in plain English.">
-<meta property="og:url" content="https://wackysolutions.org/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#12100C">
-
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="/site.webmanifest">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>!WackySolutions LLC — apps for people with an idea and no technical background</title>
+<meta name="description" content="A creative technology company in Atlanta. We form your company, design and build your app, and publish it to the App Store and Google Play — with the same person on the phone from start to finish.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "!WackySolutions LLC",
-  "alternateName": "!WackySolutions",
-  "description": "Creative technology company. Business entity formation, app design and development, and App Store and Google Play deployment for first-time founders.",
-  "url": "https://wackysolutions.org/",
-  "email": "info@wackysolutions.org",
-  "telephone": "+1-404-409-6050",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "1870 The Exchange SE, Ste 220 #202767",
-    "addressLocality": "Atlanta",
-    "addressRegion": "GA",
-    "postalCode": "30339",
-    "addressCountry": "US"
-  },
-  "foundingDate": "2026-08-10",
-  "areaServed": "US"
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Bodoni+Moda:opsz,wght@6..96,400..700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<canvas id="stage" aria-hidden="true"></canvas>
+<div class="rail" aria-hidden="true">
+  <span class="rail-glyph"><span></span><span></span><span></span></span>
+  <a class="rail-brand" href="index.html" tabindex="-1">!WackySolutions LLC</a>
+  <svg class="asterisk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1v22M1 12h22M4.2 4.2l15.6 15.6M19.8 4.2L4.2 19.8" stroke="#D4A017" stroke-width="2.4" fill="none"/></svg>
+</div>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="bang">!</span>WackySolutions</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <button class="nav-close">Close</button>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/services.html">Services</a>
-      <a href="/contact.html">Contact</a>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a class="brand" href="index.html"><span><span class="hot">!</span>WackySolutions</span><span class="brand-suffix">LLC</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav aria-label="Primary">
+      <ul class="nav-list" id="primary-nav">
+        <li><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
+        <li><a class="nav-link" href="about.html">About</a></li>
+        <li><a class="nav-link" href="services.html">Services</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-
-  <!-- ============ HERO: the Idea Drop ============ -->
-  <section class="hero">
-    <div class="wrap">
-      <h1 class="wordmark-fallback"><span class="bang">!</span>WackySolutions</h1>
-      <div class="hero-copy">
-        <p class="hero-tag">Creative technology · Atlanta, GA</p>
-        <p class="lede">You have an app idea. We have twenty-five years of building software. Let's skip the part where you learn to code.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/contact.html">Tell us your idea</a>
-          <a class="btn btn-ghost" href="/services.html">See what's included</a>
+  <section class="hero hero-tall">
+    <div class="shell hero-top">
+      <div class="hero-head">
+        <p class="label">Atlanta, Georgia &mdash; serving clients nationwide</p>
+        <h1 class="kicker">The <span class="hot">middle person</span> you&rsquo;ve been missing</h1>
+        <p class="lede">!WackySolutions LLC is a creative technology company. We are here for the person with a genuinely good app idea and no idea what to do next.</p>
+        <div class="cta-row">
+          <a class="btn" href="contact.html">Request a quote</a>
+          <a class="tel-link" href="tel:+14044096050">404-409-6050</a>
         </div>
+      </div>
+      <div class="hero-note"><p class="micro">There is a gap in the app industry, and a lot of good ideas fall into it. On one side, people with real ideas. On the other, development firms with quotes 30 pages long and discovery documents written in heavy tech jargon you don&rsquo;t speak. We built this company to be the translator in the middle, and to stay in the middle the entire time.</p></div>
+    </div>
+    <div class="markrow" style="--mark-size: 20vw; --mark-size-sm: 27vw">
+      <div class="pagemark" aria-hidden="true"><span class="hot">!</span>Wacky</div>
+      <nav class="stack" aria-label="Service areas">
+        <a href="services.html#formation"><span>Formation</span></a>
+        <a href="services.html#build"><span>Design &amp; build</span></a>
+        <a href="services.html#publishing"><span>Publishing</span></a>
+      </nav>
+    </div>
+  <nav class="stack-flat" aria-label="Service areas">
+    <a href="services.html#formation">Formation</a>
+    <a href="services.html#build">Design &amp; build</a>
+    <a href="services.html#publishing">Publishing</a>
+  </nav>
+  </section>
+
+  <section class="section section-flush">
+    <div class="shell split reveal">
+      <div class="split-label"><p class="label">The gap</p></div>
+      <div class="split-body">
+        <p class="pull">People either overpay, get something that isn&rsquo;t what they described, or <span class="hot">give up.</span></p>
+        <p>On one side are people with real ideas &mdash; a way to fix something they deal with every day, a business they&rsquo;ve run for years that should have an app. On the other side you have development firms with quotes 30 pages long, discovery documents written in heavy tech jargon you don&rsquo;t speak, just to get passed to a different team once the contract is signed.</p>
+        <p>Usually they give up. We built this company so they don&rsquo;t have to.</p>
+        <p><a href="about.html">Read why we started</a></p>
       </div>
     </div>
   </section>
 
-  <!-- ============ SCROLL JOURNEY ============ -->
-  <div class="journey">
-
-    <section class="act">
-      <div class="wrap">
-        <div class="act-card reveal">
-          <p class="act-num">01 — In your head</p>
-          <h2>Right now it's just a thought</h2>
-          <p>Maybe it's been rattling around for years. You've described it to friends. You've searched the App Store to check nobody built it yet. What you don't have is a developer, a business entity, or the faintest idea what any of that costs.</p>
-          <p class="muted">That's the normal starting point. It's the only one we ask for.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="act">
-      <div class="wrap">
-        <div class="act-card reveal">
-          <p class="act-num">02 — On the screen</p>
-          <h2>Then you can point at it</h2>
-          <p>We talk. It feels like a conversation, because it is one — but we're pulling out requirements, screens, and data relationships while you're busy being excited about your idea.</p>
-          <p>A few days later you're looking at wireframes. Real screens, in order, that you can click through and argue with. This is where most people realise their idea just became a thing.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="act">
-      <div class="wrap">
-        <div class="act-card reveal">
-          <p class="act-num">03 — In their hands</p>
-          <h2>And then it's an app</h2>
-          <p>Built, tested, and submitted to the App Store and Google Play under a business entity we set up for you — with the accounting structure to actually collect money and stay compliant with your state filings.</p>
-          <p class="muted">Same team the whole way. Nobody hands you off after you sign.</p>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- ============ GROUNDED CONTENT ============ -->
-  <div class="grounded">
-
-    <section>
-      <div class="wrap">
-        <p class="eyebrow">What we actually do</p>
-        <h2>Three problems, one company</h2>
-        <p class="lede" style="margin-bottom:2.2rem;">Most people with an app idea get stuck on one of these. You'd normally hire three different firms. You don't have to.</p>
-
-        <div class="grid grid-3">
-          <div class="card reveal">
-            <h3>Stand up the business</h3>
-            <p>We form the entity your app will live inside, set up the accounting structure so revenue has somewhere legitimate to land, and keep you on the right side of state and federal filings.</p>
+  <section class="section section-tint">
+    <div class="shell split reveal">
+      <div class="split-label"><p class="label">What we do</p></div>
+      <div class="split-body">
+        <h2>Everything between the idea and the store</h2>
+        <p>You could hire a formation service, a design studio, a development firm, and a consultant to manage them. Or you could hire us once.</p>
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-tag">Formation</span>
+            <h3>Business entity formation</h3>
+            <p>The entity, the EIN, the books structure and the compliance calendar &mdash; so revenue has somewhere legitimate to land from day one.</p>
           </div>
-          <div class="card reveal">
-            <h3>Design and build the app</h3>
-            <p>Wireframes first, so you're making decisions about something you can see. Then the build — iOS and Android — with an AI-assisted stack that keeps cost down instead of padding hours.</p>
+          <div class="card">
+            <span class="card-tag">Design and build</span>
+            <h3>App design and development</h3>
+            <p>Requirements gathered by conversation, wireframes you approve before anything is built, then an iOS and Android build with testing and revisions included.</p>
           </div>
-          <div class="card reveal">
-            <h3>Get it published</h3>
-            <p>Developer accounts, store listings, review submissions, the rejection letters nobody warns you about. We handle the paperwork and the resubmissions.</p>
+          <div class="card">
+            <span class="card-tag">Publishing</span>
+            <h3>App Store &amp; Google Play publishing</h3>
+            <p>Developer accounts, business verification, submission, reviewer pushback, and the updates that always follow a first release.</p>
           </div>
         </div>
+        <p><a href="services.html">See how each part works</a></p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <hr class="rule">
-
-    <section>
-      <div class="wrap">
-        <p class="eyebrow">How it goes</p>
-        <h2>From "I have an idea" to "it's live"</h2>
-
-        <ol class="steps">
-          <li class="reveal">
-            <h3>A conversation, not an intake form</h3>
-            <p>Tell us about the idea the way you'd tell a friend. We're listening for the things that become requirements. You don't need vocabulary you don't have.</p>
-          </li>
-          <li class="reveal">
-            <h3>Wireframes you can react to</h3>
-            <p>Screens in order, laid out so you can say "no, that button goes there." Changing your mind at this stage is free — that's the entire point of doing it first.</p>
-          </li>
-          <li class="reveal">
-            <h3>Your business entity, set up properly</h3>
-            <p>Formed in the right state with the right structure, so the app has somewhere to earn and you have something to file.</p>
-          </li>
-          <li class="reveal">
-            <h3>The build</h3>
-            <p>We build it. You're welcome to watch closely or check in weekly — some clients want a standing call, some want to be surprised. Both are fine.</p>
-          </li>
-          <li class="reveal">
-            <h3>Submission and launch</h3>
-            <p>App Store and Google Play. We handle the developer accounts, the listings, the review process, and the fixes if reviewers push back.</p>
-          </li>
-        </ol>
+  <section class="section">
+    <div class="shell split reveal">
+      <div class="split-label"><p class="label">Who we&rsquo;re for</p></div>
+      <div class="split-body">
+        <h2>No technical background required</h2>
+        <ul class="mark-list">
+          <li>People with an idea and no technical background</li>
+          <li>Small business owners whose operation should have an app by now</li>
+          <li>People who&rsquo;ve received quotes from a development firm and found them alarming</li>
+          <li>Anyone who&rsquo;s been told they would never have an app</li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <hr class="rule">
-
-    <section>
-      <div class="wrap">
-        <p class="eyebrow">Why we're different</p>
-        <h2>We don't cut corners. We cut red tape.</h2>
-
-        <div class="grid grid-2">
-          <div class="card reveal">
-            <h3>One team, one time zone</h3>
-            <p>Development usually means coordinating across countries, accents, and working hours. We absorb that so you never have to run a stand-up at 4am or decode a status update.</p>
-          </div>
-          <div class="card reveal">
-            <h3>Plain English, on purpose</h3>
-            <p>We will not send you a document full of terms you have to look up. If we can't explain a decision in a sentence you'd repeat to a friend, we haven't finished thinking about it.</p>
-          </div>
-          <div class="card reveal">
-            <h3>You choose your altitude</h3>
-            <p>Bring your own designs, wireframes, tables, and data relationships and your price drops accordingly. Bring nothing but the idea and watch it get built from the best seat in the house.</p>
-          </div>
-          <div class="card reveal">
-            <h3>Twenty-five years of scar tissue</h3>
-            <p>We've built business IT systems since long before "app" meant this. That experience is mostly useful for knowing which shortcuts are safe and which ones cost you a rebuild.</p>
-          </div>
-        </div>
+  <section class="section section-tint">
+    <div class="shell split reveal">
+      <div class="split-label"><p class="label">Experience</p></div>
+      <div class="split-body">
+        <h2>What twenty-five years buys you</h2>
+        <p>We have been building business IT solutions for over twenty-five years &mdash; the unglamorous kind, for organizations where systems have to actually work on Monday morning. That history matters less for the code and more for the judgment: knowing which shortcuts are safe, which requirements are going to change, and which &ldquo;small change&rdquo; is going to cost you a rebuild in month four.</p>
+        <p>What doesn&rsquo;t change: we don&rsquo;t rush you off the phone, and we don&rsquo;t hand you to another team once your account is signed. The same person stays with you until your app is published live.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section-tight">
-      <div class="wrap">
-        <div class="card card-gold reveal" style="text-align:center;">
-          <h2 style="margin-bottom:.4rem;">So what's the idea?</h2>
-          <p class="muted" style="margin-inline:auto;">No pitch deck required. A paragraph is plenty.</p>
-          <div class="btn-row" style="justify-content:center;">
-            <a class="btn btn-primary" href="/contact.html">Start the conversation</a>
-            <a class="btn btn-ghost" href="tel:+14044096050">404-409-6050</a>
-          </div>
-        </div>
+  <section class="band">
+    <div class="shell band-inner">
+      <h2>Tell us about the idea</h2>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn" href="contact.html">Request a quote</a>
+        <a class="tel-link" href="tel:+14044096050">404-409-6050</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </div>
 </main>
 
-<footer class="site-footer grounded">
-  <div class="wrap">
+<footer class="site-footer">
+  <div class="shell">
     <div class="footer-grid">
       <div>
-        <h4>!WackySolutions LLC</h4>
-        <address class="entity">
+        <p class="label">Get in touch</p>
+        <address>
+          !WackySolutions LLC<br>
           1870 The Exchange SE, Ste 220 #202767<br>
           Atlanta, GA 30339<br>
           <a href="tel:+14044096050">404-409-6050</a><br>
@@ -235,34 +159,30 @@
         </address>
       </div>
       <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-          <li><a href="/privacy.html">Privacy Policy</a></li>
+        <p class="label">Pages</p>
+        <ul class="footer-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
         </ul>
       </div>
       <div>
-        <h4>What we do</h4>
-        <ul>
-          <li>Business entity formation</li>
-          <li>App design and development</li>
-          <li>App Store &amp; Google Play publishing</li>
+        <p class="label">What we do</p>
+        <ul class="footer-list">
+          <li><a href="services.html#formation">Business entity formation</a></li>
+          <li><a href="services.html#build">App design and development</a></li>
+          <li><a href="services.html#publishing">App Store &amp; Google Play publishing</a></li>
         </ul>
       </div>
     </div>
-    <p class="legal-line">© 2026 !WackySolutions LLC. All rights reserved. A Georgia limited liability company.</p>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> !WackySolutions LLC</span>
+      <span>A Georgia limited liability company</span>
+    </div>
   </div>
 </footer>
 
-<script type="importmap">
-{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script type="module" src="/assets/js/stage.js"></script>
-<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

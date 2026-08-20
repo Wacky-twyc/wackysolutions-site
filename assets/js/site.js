@@ -1,180 +1,200 @@
 /* =========================================================
-   !WackySolutions — site.js
-   Navigation, scroll reveals, the scroll-driven morph, contact form.
-   Everything here is progressive: the page works fully without it.
+   !WackySolutions LLC — site behaviour
+   No dependencies. Safe to load with `defer` on every page.
    ========================================================= */
-(function(){
-  'use strict';
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  "use strict";
 
-  /* ---------- Mobile navigation ---------- */
-  var nav = document.querySelector('.nav');
-  var toggle = document.querySelector('.nav-toggle');
-  var closeBtn = document.querySelector('.nav-close');
+  /* ---- Mobile navigation ------------------------------------------ */
+  var toggle = document.querySelector(".nav-toggle");
+  var navList = document.getElementById("primary-nav");
 
-  function setNav(open){
-    if (!nav) return;
-    nav.setAttribute('data-open', open ? 'true' : 'false');
-    if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open && window.innerWidth < 768 ? 'hidden' : '';
-    if (open){
-      var first = nav.querySelector('a');
-      if (first) first.focus();
-    }
+  if (toggle && navList) {
+    toggle.addEventListener("click", function () {
+      var open = navList.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.textContent = open ? "Close" : "Menu";
+    });
   }
 
-  if (toggle) toggle.addEventListener('click', function(){
-    setNav(nav.getAttribute('data-open') !== 'true');
-  });
-  if (closeBtn) closeBtn.addEventListener('click', function(){
-    setNav(false);
-    if (toggle) toggle.focus();
-  });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && nav && nav.getAttribute('data-open') === 'true'){
-      setNav(false);
-      if (toggle) toggle.focus();
-    }
-  });
-  if (nav) nav.addEventListener('click', function(e){
-    if (e.target.tagName === 'A' && window.innerWidth < 768) setNav(false);
-  });
+  /* ---- Footer year ------------------------------------------------ */
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 
-  /* ---------- Scroll reveals ---------- */
-  var reveals = document.querySelectorAll('.reveal');
-  if (reduced || !('IntersectionObserver' in window)){
-    Array.prototype.forEach.call(reveals, function(el){ el.classList.add('is-in'); });
+  /* ---- Scroll reveal ---------------------------------------------- */
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var targets = document.querySelectorAll(".reveal");
+
+  if (reduced || !("IntersectionObserver" in window)) {
+    targets.forEach(function (el) { el.classList.add("is-in"); });
   } else {
-    var revealIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          entry.target.classList.add('is-in');
-          revealIO.unobserve(entry.target);
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+          observer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    Array.prototype.forEach.call(reveals, function(el){ revealIO.observe(el); });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0 });
+
+    targets.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---------- Scroll-driven morph ---------- */
-  // The particle cloud reads the wordmark, then the wireframe, then the phone.
-  // GSAP is optional; without it the hero simply stays as the wordmark.
-  function initScrollMorph(){
-    if (reduced) return;
-    if (!window.gsap || !window.ScrollTrigger) return;
-    var journey = document.querySelector('.journey');
-    if (!journey) return;
+  /* ---- Fit the oversized page mark to its row -----------------------
+     The mark is meant to run the full width of the page. Measuring beats
+     guessing a vw value, because the answer changes with the word, the
+     viewport, and whether the webfont has loaded yet.
+     ------------------------------------------------------------------- */
+  var marks = document.querySelectorAll(".pagemark");
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    ScrollTrigger.create({
-      trigger: journey,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.6,
-      onUpdate: function(self){
-        if (window.__stageSetMorph) window.__stageSetMorph(self.progress * 2);
-      }
-    });
-
-    // Fade the canvas out once the narrative is over so later sections stay clean.
-    ScrollTrigger.create({
-      trigger: journey,
-      start: 'bottom bottom',
-      end: 'bottom top+=30%',
-      scrub: 0.4,
-      onUpdate: function(self){
-        if (window.__stageSetFade) window.__stageSetFade(1 - self.progress);
-      }
-    });
-  }
-
-  if (document.readyState === 'complete') initScrollMorph();
-  else window.addEventListener('load', initScrollMorph);
-
-  /* ---------- Header shadow on scroll ---------- */
-  var header = document.querySelector('.site-header');
-  if (header){
-    var lastKnown = 0, ticking = false;
-    window.addEventListener('scroll', function(){
-      lastKnown = window.scrollY;
-      if (!ticking){
-        window.requestAnimationFrame(function(){
-          header.setAttribute('data-scrolled', lastKnown > 20 ? 'true' : 'false');
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-
-  /* ---------- Current year ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function(el){
-    el.textContent = new Date().getFullYear();
+  // Wrap the word so its rendered width can be measured directly.
+  marks.forEach(function (el) {
+    if (el.firstElementChild && el.firstElementChild.classList.contains("pm-inner")) return;
+    var inner = document.createElement("span");
+    inner.className = "pm-inner";
+    while (el.firstChild) inner.appendChild(el.firstChild);
+    el.appendChild(inner);
   });
 
-  /* ---------- Contact form ---------- */
-  var form = document.getElementById('contact-form');
-  if (form){
-    var status = document.getElementById('form-status');
+  var measureCanvas = document.createElement("canvas").getContext("2d");
 
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      // Honeypot: real people leave this empty.
-      if (form.querySelector('[name="company_website"]').value) return;
-
-      var data = new FormData(form);
-      var name = (data.get('name') || '').toString().trim();
-      var email = (data.get('email') || '').toString().trim();
-      var message = (data.get('message') || '').toString().trim();
-
-      if (!name || !email || !message){
-        say('Add your name, email, and a note about your idea.', 'error');
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-        say('That email address does not look right.', 'error');
-        return;
-      }
-
-      var endpoint = form.getAttribute('data-endpoint');
-
-      // No endpoint configured yet: hand off to the visitor's mail app so the
-      // form is never a dead end during Apple's review.
-      if (!endpoint || endpoint.indexOf('REPLACE') !== -1){
-        var subject = encodeURIComponent('App idea from ' + name);
-        var body = encodeURIComponent(
-          'Name: ' + name + '\n' +
-          'Email: ' + email + '\n' +
-          'Phone: ' + (data.get('phone') || '') + '\n' +
-          'Stage: ' + (data.get('stage') || '') + '\n\n' +
-          message
-        );
-        window.location.href = 'mailto:info@wackysolutions.org?subject=' + subject + '&body=' + body;
-        say('Opening your email app so you can send it.', 'ok');
-        return;
-      }
-
-      say('Sending…', '');
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
-      }).then(function(res){
-        if (!res.ok) throw new Error('bad status');
-        form.reset();
-        say('Got it. We reply within one business day.', 'ok');
-      }).catch(function(){
-        say('That did not send. Email info@wackysolutions.org and we will pick it up there.', 'error');
-      });
-    });
-
-    function say(msg, state){
-      if (!status) return;
-      status.textContent = msg;
-      status.setAttribute('data-state', state || '');
-    }
+  // Sit the word on the bottom edge of the hero with a hairline crop,
+  // whichever font actually ends up rendering.
+  function seatMark(el, size) {
+    if (!measureCanvas) return;
+    try {
+      var style = window.getComputedStyle(el);
+      measureCanvas.font = style.fontWeight + " " + size + "px " + style.fontFamily;
+      var m = measureCanvas.measureText(el.textContent.toUpperCase());
+      if (!m.fontBoundingBoxAscent) return;
+      var boxHeight = el.getBoundingClientRect().height;
+      var baseline = (boxHeight - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2
+                     + m.fontBoundingBoxAscent;
+      var overhang = boxHeight - (baseline + m.actualBoundingBoxDescent);
+      el.style.marginBottom = -(overhang + size * 0.012) + "px";
+    } catch (err) { /* keep the CSS fallback */ }
   }
+
+  function fitMarks() {
+    marks.forEach(function (el) {
+      var inner = el.firstElementChild;
+      var available = el.clientWidth;
+      if (!inner || !available) return;
+      el.style.fontSize = "100px";
+      var natural = inner.getBoundingClientRect().width;
+      if (!natural) return;
+      var size = 100 * available / natural;
+      var cap = parseFloat(el.getAttribute("data-fit-max"));
+      if (cap && size > cap) size = cap;
+      el.style.fontSize = size + "px";
+      seatMark(el, size);
+    });
+  }
+
+  if (marks.length) {
+    fitMarks();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMarks);
+    window.addEventListener("load", fitMarks);
+    var resizeTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(fitMarks, 120);
+    });
+  }
+
+  /* ---- Contact form ------------------------------------------------
+     Posts JSON to the endpoint in data-endpoint on the <form>, which is
+     the Formspree AJAX API. Formspree replies with JSON either way: a 2xx
+     on success, or a 4xx carrying an `errors` array we surface verbatim.
+     If data-endpoint is ever emptied, the form falls back to a mailto:
+     handoff so the page is never a dead end.
+     ------------------------------------------------------------------ */
+  var form = document.getElementById("contact-form");
+  if (!form) return;
+
+  var status = document.getElementById("form-status");
+  var submit = form.querySelector('button[type="submit"]');
+  var endpoint = (form.dataset.endpoint || "").trim();
+  var fallbackEmail = form.dataset.fallbackEmail || "info@wackysolutions.org";
+
+  var cannotSend = "That did not send. Please call 404-409-6050 or write to " +
+    fallbackEmail + " and we will pick it up from there.";
+
+  function say(message, state) {
+    status.textContent = message;
+    status.className = "form-status" + (state ? " " + state : "");
+    status.hidden = false;
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Bots fill hidden fields; people do not.
+    if (form.querySelector('input[name="company_website"]').value) return;
+
+    var data = Object.fromEntries(new FormData(form).entries());
+    delete data.company_website;
+
+    if (!endpoint) {
+      var body = [
+        "Name: " + (data.name || ""),
+        "Email: " + (data.email || ""),
+        "Phone: " + (data.phone || ""),
+        "Stage: " + (data.stage || ""),
+        "",
+        data.message || ""
+      ].join("\n");
+
+      window.location.href =
+        "mailto:" + fallbackEmail +
+        "?subject=" + encodeURIComponent("Project enquiry from " + (data.name || "the website")) +
+        "&body=" + encodeURIComponent(body);
+
+      say("Opening your email app with this message ready to send. If nothing happens, write to " + fallbackEmail + " directly.");
+      return;
+    }
+
+    submit.disabled = true;
+    var original = submit.textContent;
+    submit.textContent = "Sending";
+
+    fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    })
+      .then(function (response) {
+        // Read the body either way; the useful detail is in the error case.
+        return response
+          .json()
+          .catch(function () { return null; })
+          .then(function (payload) {
+            return { ok: response.ok, payload: payload };
+          });
+      })
+      .then(function (result) {
+        if (result.ok) {
+          form.reset();
+          say("Thanks — that came through. We answer every enquiry within one business day.", "is-ok");
+          return;
+        }
+        // Formspree returns { errors: [{ field, message, code }] }.
+        var detail = "";
+        if (result.payload && Array.isArray(result.payload.errors)) {
+          detail = result.payload.errors
+            .map(function (item) { return item.message; })
+            .filter(Boolean)
+            .join(" ");
+        }
+        say(detail || cannotSend, "is-error");
+      })
+      .catch(function () {
+        say(cannotSend, "is-error");
+      })
+      .finally(function () {
+        submit.disabled = false;
+        submit.textContent = original;
+      });
+  });
 })();
