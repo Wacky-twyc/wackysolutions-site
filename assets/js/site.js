@@ -127,11 +127,61 @@
     status.hidden = false;
   }
 
+  // The form is novalidate, so the browser never enforces the required
+  // attributes and never shows its own bubbles. We check the same fields
+  // here instead, in the site's own wording.
+  var checks = [
+    { name: "name",
+      empty: "Please tell us your name, so we know who we are replying to." },
+    { name: "email",
+      empty: "Please add an email address, so we can reply.",
+      test: function (value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); },
+      invalid: "That email address looks incomplete. Please check it and try again." },
+    { name: "message",
+      empty: "Please tell us a little about the idea. A rough description is fine." }
+  ];
+
+  function fieldNamed(name) {
+    return form.querySelector('[name="' + name + '"]');
+  }
+
+  // The first thing a person still needs to fix, or null when all is well.
+  // Clears every previous mark first, so only the field being called out is
+  // ever outlined -- otherwise an earlier red box lingers after it is fixed.
+  function findProblem() {
+    for (var j = 0; j < checks.length; j++) {
+      fieldNamed(checks[j].name).removeAttribute("aria-invalid");
+    }
+    for (var i = 0; i < checks.length; i++) {
+      var check = checks[i];
+      var field = fieldNamed(check.name);
+      var value = (field.value || "").trim();
+      if (!value) return { field: field, message: check.empty };
+      if (check.test && !check.test(value)) return { field: field, message: check.invalid };
+    }
+    return null;
+  }
+
+  // Drop the mark as soon as they start correcting it, so red doesn't linger.
+  for (var c = 0; c < checks.length; c++) {
+    fieldNamed(checks[c].name).addEventListener("input", function () {
+      this.removeAttribute("aria-invalid");
+    });
+  }
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Bots fill hidden fields; people do not.
     if (form.querySelector('input[name="company_website"]').value) return;
+
+    var problem = findProblem();
+    if (problem) {
+      problem.field.setAttribute("aria-invalid", "true");
+      say(problem.message, "is-error");
+      problem.field.focus();
+      return;
+    }
 
     var data = Object.fromEntries(new FormData(form).entries());
     delete data.company_website;

@@ -485,6 +485,9 @@ p:last-child { margin-bottom: 0; }
 .field input:focus, .field select:focus, .field textarea:focus {
   background: #fff; border-color: var(--accent-text); outline: none;
 }
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] { border-color: var(--error); }
 .field-hint { font-size: 0.7rem; color: var(--ink-3); margin-top: 0.35rem; }
 .honeypot { position: absolute; left: -9999px; }
 .form-status {
