@@ -6,19 +6,22 @@
    ========================================================= */
 
 :root {
-  /* Ground — flat, light, no gradients */
-  --paper:     #E4E4E1;
-  --paper-2:   #EDEDEA;
-  --panel:     #F3F3F0;
+  /* Ground — white carries the page; the greys are bands laid on top of it,
+     stepping darker rather than lighter, so a tinted section reads as a
+     deliberate stripe instead of a slightly different flavour of grey. */
+  --paper:     #FFFFFF;
+  --paper-2:   #EFEFEB;
+  --panel:     #E6E6E0;
 
   /* Ink */
   --ink:       #141312;
   --ink-2:     #3C3A38;
-  --ink-3:     #6E6B67;
+  --ink-3:     #66635F;   /* darkened with the inversion: the greys are now
+                             the darkest ground, so muted text had to follow */
 
   /* Hairlines */
   --rule:      #B4B3AE;
-  --rule-soft: #CBCAC5;
+  --rule-soft: #DCDBD5;   /* softened: hairlines read louder on white */
 
   /* The one accent — gold.
      --accent is the bright mark: fills, bullets, buttons, big graphics.
@@ -27,6 +30,8 @@
      about 1.9:1 against --paper, which is unreadable at body sizes).
      --error is functional only, for failed form submissions. */
   --accent:      #D4A017;
+  /* The SOLUTIONS mark — present at a glance, never competing with WACKY. */
+  --watermark:   rgba(20, 19, 18, 0.065);
   --accent-text: #7E5B07;
   --error:       #A32014;
 
@@ -266,6 +271,23 @@ p:last-child { margin-bottom: 0; }
   user-select: none;
 }
 .pagemark .hot { color: var(--accent); } /* giant: brightness is fine at this scale */
+
+/* The other half of the name. WACKY is the shout; SOLUTIONS is the ground it
+   stands on, tracked out to sit under the mark at roughly the same width. */
+.submark {
+  font-family: var(--display);
+  font-weight: 500;
+  /* Sized so the nine letters span the same measure as the six above them,
+     and flush left with the "!" so the two lines read as one lockup. */
+  font-size: var(--submark-size, 13.3vw);
+  line-height: 0.8;
+  letter-spacing: 0.083em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--watermark);
+  user-select: none;
+  margin-top: 0.02em;
+}
 .pagemark > .pm-inner { display: inline-block; }
 
 /* Vertical tabs at the right edge of the mark row */
@@ -437,12 +459,18 @@ p:last-child { margin-bottom: 0; }
 /* ---------- Pull quote ---------- */
 .pull {
   font-family: var(--display);
-  font-weight: 400;
-  font-size: clamp(1.5rem, 3.2vw, 2.35rem);
-  line-height: 1.14;
-  letter-spacing: -0.015em;
+  /* Bodoni Moda carries an optical-size axis. Left alone, the browser picks the
+     display cut at this size, and a Didone's hairlines all but vanish on white.
+     Pinning opsz to a text cut keeps the same letterforms with strokes you can
+     actually read; the extra weight and leading do the rest. */
+  font-optical-sizing: none;
+  font-variation-settings: "opsz" 14, "wght" 500;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  line-height: 1.26;
+  letter-spacing: -0.004em;
   color: var(--ink);
-  max-width: 20ch;
+  max-width: 24ch;
   margin-block: 1.75rem;
 }
 .split-body > .pull:first-child { margin-top: 0; }
@@ -565,6 +593,7 @@ p:last-child { margin-bottom: 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-tall { min-height: 0; }
   .pagemark { font-size: var(--mark-size-sm, 26vw); }
+  .submark { font-size: var(--submark-size-sm, 15.7vw); }
   .stack { display: none; }
   .stack-flat { display: flex; }
 }
@@ -573,4 +602,70 @@ p:last-child { margin-bottom: 0; }
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---------- Moodboard: the life cycle on a studio monitor ---------- */
+.moodboard .split { margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+.moodboard .split-body p { max-width: 62ch; color: var(--ink-2); }
+
+.monitor { margin: 0; }
+.mb-svg { width: 100%; height: auto; display: block; }
+.monitor figcaption {
+  margin-top: 1rem;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--ink-3);
+  max-width: 52ch;
+}
+
+/* Hardware — a real monitor sitting on the page, not a diagram of one */
+.mb-body   { fill: url(#mbBezel); }
+.mb-inset  { fill: #0B0A0A; }
+.mb-screen { fill: var(--paper-2); }
+.mb-grain  { opacity: 0.055; mix-blend-mode: multiply; pointer-events: none; }
+.mb-glare  { fill: url(#mbGlare); pointer-events: none; }
+.mb-neck   { fill: url(#mbStand); }
+.mb-base   { fill: url(#mbStand); }
+.mb-floor  { fill: #141312; opacity: 0.18; }
+.mb-led    { fill: url(#mbLed); }
+.mb-brand  {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  font-stretch: 88%; letter-spacing: 0.24em; text-anchor: middle;
+  fill: #6A6862;
+}
+
+/* Pinned paper */
+.mb-card { fill: #FCFCFA; stroke: #D9D8D2; stroke-width: 1; }
+.mb-tape { fill: var(--accent); opacity: 0.72; }
+.mb-tape-lip { fill: #F0DCA6; opacity: 0.5; }
+.mb-pin        { fill: var(--accent); }
+.mb-pin-hi     { fill: #F8E6AE; opacity: 0.85; }
+.mb-pin-shadow { fill: #141312; opacity: 0.22; }
+.mb-hair { stroke: var(--rule-soft); stroke-width: 1; }
+.mb-num {
+  font-family: var(--display); font-size: 25px; font-weight: 600;
+  font-optical-sizing: none; font-variation-settings: "opsz" 14, "wght" 600;
+  letter-spacing: 0.012em; fill: var(--accent-text);
+}
+.mb-label {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 600;
+  font-stretch: 88%; letter-spacing: 0.03em; fill: var(--ink-2);
+}
+
+/* Wireframe vocabulary — hairlines and grey bars, same as the page itself */
+.mb-wire       { fill: none; stroke: var(--rule);      stroke-width: 1.5; }
+.mb-wire-thin  { fill: none; stroke: var(--rule-soft); stroke-width: 1.5; }
+.mb-wire-accent{ fill: none; stroke: var(--accent);    stroke-width: 1.5; }
+.mb-bar        { fill: var(--rule-soft); }
+.mb-accent     { fill: var(--accent); }
+.mb-flow       { stroke: var(--rule); stroke-width: 1.5; }
+.mb-tick       { fill: none; stroke: var(--accent-text); stroke-width: 2; }
+.mb-cross      { fill: none; stroke: var(--error);      stroke-width: 2; }
+
+/* Below this width the board would shrink until the card labels are illegible,
+   so it keeps its size and the reader swipes it instead. */
+@media (max-width: 860px) {
+  .monitor-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .monitor-scroll .mb-svg { min-width: 1020px; }
+  .monitor figcaption { margin-top: 0.85rem; }
 }
